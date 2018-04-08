@@ -1,0 +1,35 @@
+#lang racket
+;list ops
+(define (revlist l)
+  (if (null? l)
+      l
+      (append (revlist (cdr l))(list (car l)))))
+(define (zero_trim l)
+  (if (null? l)
+      l
+      (if (= (car l) 0)
+          (zero_trim (cdr l))
+          l)))
+
+; binary ops
+(define (poly_add apol bpol)
+  (revlist apol)
+  (revlist bpol)
+  (if (null? apol)
+      bpol
+      (if (null? bpol)
+          apol
+          (zero_trim(cons (+ (car apol) (car bpol))(poly_add (cdr apol)(cdr bpol)))))))
+(define (poly_sub apol bpol)
+  (revlist apol)
+  (revlist bpol)
+  (if (null? apol)
+      bpol
+      (if (null? bpol)
+          apol
+          (zero_trim(cons (- (car apol) (car bpol))(poly_sub (cdr apol)(cdr bpol)))))))
+
+
+
+                
+  
