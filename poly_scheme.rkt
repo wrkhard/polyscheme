@@ -1,6 +1,6 @@
 #lang racket
 
-;William Keely ID: 113428672
+
 ;list/utility ops
 (define (revlist l)
   (if (null? l)
